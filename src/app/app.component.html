@@ -1,53 +1,78 @@
 <style>
-  * {
-    margin: 5px;
-  }
-  h1 {
-    color: red;
-  }
-
-  input {
-    height: 35px;
-    width: 80%;
-    padding: 10px;
-    font-size: 18px;
+  .navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
   }
 
-  button {
-    height: 35px;
+  .navbar li {
+    float: left;
   }
 
-  button.delete {
-    height: 35px;
+  .navbar li a {
+    display: block;
     color: white;
-    border: none;
-    background-color: rgb(249, 68, 45);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
   }
-  button.update {
-    height: 35px;
-    color: white;
-    background-color: green;
+
+  .navbar li a:hover {
+    background-color: #111;
+  }
+
+  .activeLink {
+    font-size: 25px;
+    color: aqua;
   }
 </style>
 
-<h1>Task Management System</h1>
+<nav>
+  <ul class="navbar">
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="activeLink"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+    </li>
 
-<input type="text" placeholder="Add Task" [(ngModel)]="task" />
+    <li>
+      <a routerLink="/about" routerLinkActive="activeLink">About</a>
+    </li>
 
-@if (isUpdate) {
-<button (click)="updateTask()" class="update">Update</button>
-} @else {
-<button (click)="addTask()" class="add">Add</button>
-}
+    <li>
+      <a routerLink="/contact" routerLinkActive="activeLink">Contact</a>
+    </li>
 
-<br /><br /><br />
+    <li>
+      <a routerLink="/services" routerLinkActive="activeLink">Service</a>
+    </li>
+    <!-- <a [routerLink]="['/network-security', {name: 'John'}]"><button>Learn More</button></a> -->
 
-<h2>List of Tasks :</h2>
-@for (item of taskList; track $index) {
-<div style="display: flex">
-  <h3>{{ item }}</h3>
-  <button class="delete" (click)="deleteTask($index)">Delete Task</button>
-  <button class="update" (click)="editFunc($index)">Edit</button>
-</div>
-}
+    <li>
+      <a
+        [routerLink]="['/courses', { course: 'fgvyyt', id: 'C103' }]"
+        routerLinkActive="activeLink"
+      >
+        Courses
+      </a>
+    </li>
 
+    <li>
+      <a routerLink="/admin" routerLinkActive="activeLink"> Admin </a>
+    </li>
+  </ul>
+
+  <button (click)="navigateToCourses()">Nav To Courses</button>
+</nav>
+
+<!-- CONTAINER  FOR PAGES -->
+<router-outlet></router-outlet>
+
+<footer>
+  <p>&copy; Copyright 2023, Todo List</p>
+</footer>
