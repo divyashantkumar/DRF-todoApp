@@ -17,6 +17,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
+
 export class CoursesComponent {
   constructor(private route: ActivatedRoute) {
   }
@@ -52,6 +53,11 @@ export class CoursesComponent {
 
     // 2.
     // console.log(this.route.snapshot.queryParams['id']);
+  }
+
+  test() {
+    console.log("asasd");
+
   }
 
 }
