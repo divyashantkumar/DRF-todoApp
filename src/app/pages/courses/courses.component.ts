@@ -57,7 +57,7 @@ export class CoursesComponent {
 
   test() {
     console.log("asasd");
-  }
 
+  }
 
 }
